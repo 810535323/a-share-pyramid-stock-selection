@@ -103,15 +103,18 @@ Whenever the user asks to turn selected stocks into a **complete executable trad
   - **Hybrid Volume-Price Entry (Base B, Pruned)**: Require `Quarterly Whitelist Passed` AND `Sector Breadth >= 40%` AND `Stock > MA60` AND `1.2–2.8x` mild volume expansion (reject `>=3.0x` extreme climax) with **T+1 non-engulfing confirmation OR T-day strong sector sync (`>=2` synchronized sector peers + sector turnover `>= 20d avg`)**; retain low-volume `B1` pullback entries. Display read-only **20-Day Down-Day Resilience Mirror (大跌逆势照妖镜)** in the watch pool to spotlight institutionally defended leaders.
   - **Symmetric Volume-Price Exit (Exit 4 + Option D Runner, Pruned & Anti-Washout)**: **`-10%` hard stop confirmed by 2 consecutive closes** (prevents intraday stop-hunt washouts, paired with a **`-15%` intraday flash-crash emergency floor**), `+8%` breakeven lock (`cost + 1%`), **Price New High + Shrinking 5d Volume Divergence (`<70%` of 20d peak 5d avg vol at `>=+20%` gain) tightens trailing stop to `MA10`**, **`+40%` trim 50% (`>=2 lots`) and leave 50% zero-risk runner trailing `MA60` with `+15%` floor (frees full attack slot)**; otherwise exit on 2 consecutive closes below `MA20`. *(Pruned redundant 15-day time stop & premature `+20%` mechanical trim via 3-era ablation.)*
   - **Idle-Cash Barbell Defense & Lot Sizing**: Park idle cash in **`50% Low-Vol Dividend ETF (512890) + 50% Treasury Bond ETF (511010)`** (odd-lot bond remainder `<1 lot` goes to `国债逆回购 131810/204001`). Simplified lot exit: `>=2 lots` hold full to `+40%` then trim half & trail MA60; `1 lot` full-position trailing; `0 lots` auto-skip & fall back to next-strongest affordable leader.
-- **Behavioral Hard Locks**: No intraday T-churning in downtrends, 48h cooldown after major stop-outs, no sub-10k RMB minimum-commission "ant trades", 90-day blacklist on major loss-inducing tickers.
+- **Behavioral & Mindset Hard Locks**: Idle 3–5yr cash only & **strictly zero leverage/margin**; no intraday T-churning in downtrends, 48h cooldown after major stop-outs, no sub-10k RMB "ant trades", 90-day blacklist on major loss tickers, never punish past rule-compliant exits using hindsight outcomes, and beware the **"lucky rule-breaking profit trap"**.
 
 ---
 
 ## Required Output Contract
 
-Every stock-selection response produced with this skill should contain:
+Every stock-selection or deep portfolio review response produced with this skill should contain:
 1. **Policy & Prosperity Tiering** (with concrete funding/order evidence, not slogans).
 2. **Upstream / Midstream / Downstream Comparison Table** (profit pool, margin range, valuation ruler).
-3. **Candidate Audit Table** (latest filing date, YTD & single-quarter revenue YoY, deducted net profit YoY, gross margin & trend, real valuation, board/lot threshold).
+3. **Candidate Audit Table** (latest filing date, YTD & single-quarter revenue YoY, deducted net profit YoY, gross margin & trend, real valuation, 15B RMB cap & minefield veto check, board/lot threshold).
 4. **Expectation Gap & Price-Volume Verdict** (who is actually resilient vs. crowded/overvalued, backed by retrieved prices or `normalize_drawdown.mjs` output).
-5. **Explicit Risk Flags & Data Freshness Statement** (filing period, quote cutoff date, non-advice disclaimer).
+5. **Structured Daily Six-Question Audit (for post-close / holding reviews)**:
+   - *Capital Triad (资金三问)*: Did capital enter (`来没来`)? Is it still inside (`在不在`)? Has it distributed/left (`走没走`)?
+   - *Logic Triad (逻辑三问)*: Has the core industry logic changed (`逻辑变没变`)? What is the current market sentiment phase (`什么情绪`)? Is today's move driven by fundamentals or pure sentiment (`产业驱动还是情绪扰动`)?
+6. **Explicit Risk Flags & Data Freshness Statement** (filing period, quote cutoff date, non-advice disclaimer).

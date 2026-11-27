@@ -71,6 +71,22 @@ When auditing a user's past trade logs, check for and prescribe locks against:
 - **Minimum-Commission "Ant Trades"**: Forbid trades under 10,000 RMB when subject to 5 RMB minimum brokerage commission; park idle cash in reverse repos/money-market ETFs.
 - **90-Day Obsession Blacklist**: Blacklist any ticker that caused a major realized loss (e.g., `> 5–8%` of account equity) for 90 days after exit to break revenge-trading bias.
 
+### 5.1 Broad-Market Surge Differentiation SOP (大奇迹日防追高与分化验真)
+When a policy/liquidity shock triggers an extreme market-wide surge (`limit-up > 200`, `advancing > 4,500`, or 5-index average gain `>= +4%`), single-day closing gains become noisy because weak sectors rise passively:
+1. **No Next-Morning Chase**: Strictly forbid chasing gap-ups or morning spikes (`9:30–14:30`) on the session immediately following a broad-market surge; wait for profit-taking differentiation.
+2. **Active Morning Leaders vs. Passive Afternoon Followers**: True mainlines lead actively *before* the broad afternoon flood; passive followers (e.g., overcapacity/policy-lagging sectors) fade first during next-day differentiation.
+3. **Differentiation Confirmation**: Only consider entries that hold the upper half of the surge candle on shrinking pullback volume (`B1`) or pass `B2-T1` non-engulfing confirmation while standing above `MA60`.
+
+### 5.2 Institutionalized Mindset & Emergency Circuit Breakers (心态制度与情绪急救)
+Manage emotions with pre-committed rules, never willpower:
+- **Capital Boundary (闲钱 + 零杠杆)**: Trade strictly with **3–5 year idle cash**; forbid margin financing, external leverage, or living/emergency funds (leverage amplifies both volatility and forced-liquidation panic).
+- **Seven-Word Survival Rule**: *闲钱、低杠杆、轻仓位、有计划、有止损、少刺激、勤复盘*.
+- **Eight Psychological Traps Self-Check**: Loss aversion, **Disposition Effect** (cutting winners early while holding losers), **FOMO / Missing-Out Anxiety**, confirmation bias, sunk-cost averaging down, overconfidence after streaks, anxious over-trading, and peer-comparison envy. **Most dangerous trap: accidentally profiting after breaking your rules** (reinforces fatal habits until one blow-up wipes out prior gains).
+- **Three Emergency Emotional Locks**:
+  1. *Never punish your past rule-compliant self with hindsight outcomes* (missing a surprise policy spike while respecting a bear-market floor is valid insurance cost).
+  2. *Replace "must break even fast" with "execute this single trade cleanly by rules"*.
+  3. *Mandatory Screen-Off*: Whenever feeling an urgent impulse to go all-in, chase a gap-up, or revenge-trade, physically step away from the terminal immediately.
+
 ## 6. Cross-Cycle Empirical Verification Benchmarks (Zero Lookahead, Zero Retuning)
 
 The V2.0 closed-loop rules (Policy Tiering -> Quarterly Audit -> Sector Breadth `>= 40%` + `Close > MA60` Dual Lock -> Strict `B1`/`B2` Entry -> `-8%` Stop / `+8%` Breakeven / `+20%` Trim 30% & Trail 70% on 20-Day MA -> `Mode B` 4-Slot Max-2-Per-Track Portfolio) were stress-tested out-of-sample with identical parameters across 5 independent full-sample universes (80 total stocks, zero survivorship bias):

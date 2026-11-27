@@ -928,6 +928,18 @@ export class V3Strategy {
   run(targetDate = null) {
     const market = this.evaluateMarketRegime(targetDate);
     const sentiment = this.sentimentObj.evaluate();
+
+    // Read-only Surge Differentiation Alert (Course 3): flag extreme broad-market surge days
+    // where single-day gains are distorted and next-day morning chasing carries high differentiation risk.
+    const isExtremeSurge = (sentiment.available && ((sentiment.limitUpCount ?? 0) > 200 || (sentiment.upCount ?? 0) > 4500))
+      || market.chgPct >= 4.0;
+    if (isExtremeSurge) {
+      const luStr = sentiment.limitUpCount != null ? `涨停 ${sentiment.limitUpCount} 家` : '';
+      const upStr = sentiment.upCount != null ? `红盘 ${sentiment.upCount} 家` : '';
+      const detail = [luStr, upStr, `五宽基均涨 ${market.chgPct >= 0 ? '+' : ''}${market.chgPct}%`].filter(Boolean).join(' / ');
+      market.vpAlerts.push(`⚡ 大奇迹日普涨高潮预警（${detail}）：单日涨幅失真，次日大概率剧烈分化——严禁次日早盘高开追高，重点观察分化回踩中缩量守住阳线中位+站稳MA60的早盘主动进攻真主线！`);
+    }
+
     const trackStatuses = this.tracks.map(t => t.evaluate(market.date));
     const downDays20 = this.buildDownDays20(market.date);
 
@@ -1193,9 +1205,7 @@ function formatMarkdown(r) {
 async function main() {
   const args = parseArgs(process.argv);
   const watchlistCfg = JSON.parse(fs.readFileSync(args.watchlist, 'utf8'));
-  const portfolioPath = fs.existsSync(args.portfolio)
-    ? args.portfolio
-    : path.join(SKILL_ROOT, 'config', 'portfolio.example.json');
+  const portfolioPath = fs.existsSync(args.portfolio) ? args.portfolio : path.join(SKILL_ROOT, 'config', 'portfolio.example.json');
   const portfolioCfg = JSON.parse(fs.readFileSync(portfolioPath, 'utf8'));
 
   const tracks = watchlistCfg.tracks.map(t => new Track(t, portfolioCfg.rules));
