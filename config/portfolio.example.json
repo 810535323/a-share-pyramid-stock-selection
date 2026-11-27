@@ -1,0 +1,43 @@
+{
+  "accountName": "A股主板4仓V3.2-Lite示例账户（请复制为 portfolio.json 并填入个人配置）",
+  "updatedAt": "2026-11-27",
+  "rules": {
+    "version": "V3.2-Lite",
+    "mainboardOnly": true,
+    "allowEtfSubstitute": true,
+    "maxSlots": 4,
+    "maxPerTrack": 2,
+    "breadthThresholdPct": 40,
+    "fiveIndexFloorMinUp": 1,
+    "volBandMin": 1.2,
+    "volBandMax": 2.8,
+    "minSyncPeersForT0": 2,
+    "maxLimitDown": 10,
+    "minAdvancing": 3000,
+    "hardStopPct": -10,
+    "hardStopMode": "two_day_close",
+    "hardStopConfirmDays": 2,
+    "flashCrashFloorPct": -15,
+    "breakevenTriggerPct": 8,
+    "breakevenLockPct": 1,
+    "runnerTriggerPct": 40,
+    "runnerTrimRatio": 0.5,
+    "runnerStopLockPct": 15,
+    "runnerTrailingMA": 60,
+    "divergenceTriggerPct": 20,
+    "divergenceTightMA": 10,
+    "divergenceVolRatio": 0.70,
+    "defenseBarbell": {
+      "dividendCode": "512890",
+      "dividendName": "红利低波ETF",
+      "dividendWeight": 0.5,
+      "bondCode": "511010",
+      "bondName": "国债ETF",
+      "bondWeight": 0.5,
+      "oddLotFallback": "国债逆回购(131810/204001)"
+    }
+  },
+  "totalEquity": 100000,
+  "cash": 100000,
+  "positions": []
+}

@@ -1,0 +1,614 @@
+{
+  "version": "2026Q3-V3.2-Lite",
+  "updatedAt": "2026-11-27",
+  "nextAuditDate": "2027-02-01",
+  "screeningHardRules": {
+    "minMarketCapBillion": 150,
+    "vetoChecklist": [
+      "近期大股东/实控人减持公告",
+      "未来3个月大额限售股解禁",
+      "连续亏损或业绩预告突然变脸爆雷",
+      "证监会/交易所立案调查或重大监管问询",
+      "20-90亿小市值无板块联动孤立暴量/纯情绪炒名字"
+    ]
+  },
+  "note": "Agent仅需在每年1/31、4/30、8/31、10/31四大财报季后更新此JSON的股票列表与fundamentalPass状态（严格过一遍150亿市值底线+5项排雷清单），日常盘后由scripts/daily_review.mjs全自动拉取五大风格宽基+防御哑铃ETF+七星溢价雷达+全量标的(含半导体ETF穿透替补588170)并计算V3.2-Lite信号与近20日逆势照妖镜。",
+  "benchmarks": [
+    { "code": "000300", "market": "sh", "name": "沪深300", "style": "大盘蓝筹/红利基建" },
+    { "code": "399006", "market": "sz", "name": "创业板指", "style": "成长/算力/新能源" },
+    { "code": "000688", "market": "sh", "name": "科创50", "style": "硬科技/半导体/AI芯片" },
+    { "code": "000905", "market": "sh", "name": "中证500", "style": "中盘制造/周期成长" },
+    { "code": "000852", "market": "sh", "name": "中证1000", "style": "中小盘专精特新/赚钱效应" }
+  ],
+  "defenseETFs": [
+    { "code": "512890", "market": "sh", "name": "红利低波ETF", "weight": 0.5, "qdii": false },
+    { "code": "511010", "market": "sh", "name": "国债ETF", "weight": 0.5, "qdii": false }
+  ],
+  "globalSevenStarRadar": [
+    { "code": "513100", "market": "sh", "name": "纳指ETF", "qdii": true },
+    { "code": "513500", "market": "sh", "name": "标普500ETF", "qdii": true },
+    { "code": "513030", "market": "sh", "name": "德国ETF", "qdii": true },
+    { "code": "513520", "market": "sh", "name": "日经ETF", "qdii": true },
+    { "code": "518880", "market": "sh", "name": "黄金ETF", "qdii": false },
+    { "code": "512890", "market": "sh", "name": "红利低波ETF", "qdii": false },
+    { "code": "511010", "market": "sh", "name": "国债ETF", "qdii": false }
+  ],
+  "tracks": [
+    {
+      "id": "power_grid",
+      "name": "新型电力系统",
+      "policyTier": "第一档·硬工程(国网十五五4万亿)",
+      "etfProxy": "159326",
+      "benchmarkCodes": ["000300", "399006"],
+      "stocks": [
+        {
+          "code": "600089",
+          "market": "sh",
+          "name": "特变电工",
+          "tier": "上游·特高压变压器",
+          "fundamentalPass": false,
+          "q3Summary": "营收+17.3% / 扣非-0.4% / 毛利19.1%"
+        },
+        {
+          "code": "601179",
+          "market": "sh",
+          "name": "中国西电",
+          "tier": "上游·特高压一次",
+          "fundamentalPass": true,
+          "q3Summary": "营收+10.7% / 扣非+28.1% / 毛利24.3%"
+        },
+        {
+          "code": "600312",
+          "market": "sh",
+          "name": "平高电气",
+          "tier": "上游·特高压GIS",
+          "fundamentalPass": true,
+          "q3Summary": "营收-3.4% / 扣非+24.2% / 毛利29.9%"
+        },
+        {
+          "code": "600487",
+          "market": "sh",
+          "name": "亨通光电",
+          "tier": "上游·海缆/导线",
+          "fundamentalPass": true,
+          "q3Summary": "营收+29.7% / 扣非+162.8% / 毛利19.5%"
+        },
+        {
+          "code": "600522",
+          "market": "sh",
+          "name": "中天科技",
+          "tier": "上游·海缆/电网",
+          "fundamentalPass": true,
+          "q3Summary": "营收+27.6% / 扣非+76.9% / 毛利17.3%"
+        },
+        {
+          "code": "600406",
+          "market": "sh",
+          "name": "国电南瑞",
+          "tier": "中游·二次自动化总龙头",
+          "fundamentalPass": true,
+          "q3Summary": "营收+13.7% / 扣非+1.4% / 毛利25.4%"
+        },
+        {
+          "code": "002028",
+          "market": "sz",
+          "name": "思源电气",
+          "tier": "中游·输变电出海王",
+          "fundamentalPass": true,
+          "q3Summary": "营收+28.5% / 扣非+13.7% / 毛利30.6%"
+        },
+        {
+          "code": "000400",
+          "market": "sz",
+          "name": "许继电气",
+          "tier": "中游·特高压换流阀",
+          "fundamentalPass": false,
+          "q3Summary": "营收+6.1% / 扣非-34.2% / 毛利19.5%"
+        },
+        {
+          "code": "601126",
+          "market": "sh",
+          "name": "四方股份",
+          "tier": "中游·二次/AIDC-SST",
+          "fundamentalPass": true,
+          "q3Summary": "营收+8.3% / 扣非+7.2% / 毛利32%"
+        },
+        {
+          "code": "600885",
+          "market": "sh",
+          "name": "宏发股份",
+          "tier": "中游·高压继电器",
+          "fundamentalPass": true,
+          "q3Summary": "营收+34.3% / 扣非+22.9% / 毛利32.9%"
+        },
+        {
+          "code": "601877",
+          "market": "sh",
+          "name": "正泰电器",
+          "tier": "中游·低压配网",
+          "fundamentalPass": true,
+          "q3Summary": "营收+17.1% / 扣非+3.8% / 毛利24.2%"
+        },
+        {
+          "code": "688676",
+          "market": "sh",
+          "name": "金盘科技",
+          "tier": "下游·AIDC干变出海",
+          "fundamentalPass": true,
+          "q3Summary": "营收+17.5% / 扣非+13.8% / 毛利27.2%"
+        },
+        {
+          "code": "002922",
+          "market": "sz",
+          "name": "伊戈尔",
+          "tier": "下游·海外变压器",
+          "fundamentalPass": true,
+          "q3Summary": "营收+17.6% / 扣非+11.3% / 毛利19.1%"
+        },
+        {
+          "code": "301291",
+          "market": "sz",
+          "name": "明阳电气",
+          "tier": "下游·升压变/AIDC",
+          "fundamentalPass": false,
+          "q3Summary": "营收-12.4% / 扣非-59.5% / 毛利19.5%"
+        },
+        {
+          "code": "603556",
+          "market": "sh",
+          "name": "海兴电力",
+          "tier": "下游·智能电表出海",
+          "fundamentalPass": false,
+          "q3Summary": "营收+6% / 扣非-47.1% / 毛利35.3%"
+        },
+        {
+          "code": "300001",
+          "market": "sz",
+          "name": "特锐德",
+          "tier": "下游·箱变/微电网",
+          "fundamentalPass": true,
+          "q3Summary": "营收+10.5% / 扣非+23.3% / 毛利26.6%"
+        }
+      ]
+    },
+    {
+      "id": "semiconductor",
+      "name": "半导体全链",
+      "policyTier": "第一档·硬工程(集成电路全链攻关)",
+      "etfProxy": "588170",
+      "benchmarkCodes": ["000688"],
+      "stocks": [
+        {
+          "code": "002371",
+          "market": "sz",
+          "name": "北方华创",
+          "tier": "上游·设备/材料",
+          "fundamentalPass": true,
+          "q3Summary": "营收+15.3% / 扣非+4.3% / 毛利39.4%"
+        },
+        {
+          "code": "688012",
+          "market": "sh",
+          "name": "中微公司",
+          "tier": "上游·设备/材料",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "688072",
+          "market": "sh",
+          "name": "拓荆科技",
+          "tier": "上游·设备/材料",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "688019",
+          "market": "sh",
+          "name": "安集科技",
+          "tier": "上游·设备/材料",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "300666",
+          "market": "sz",
+          "name": "江丰电子",
+          "tier": "上游·设备/材料",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "688981",
+          "market": "sh",
+          "name": "中芯国际",
+          "tier": "中游·代工/封测",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "688347",
+          "market": "sh",
+          "name": "华虹公司",
+          "tier": "中游·代工/封测",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "688249",
+          "market": "sh",
+          "name": "晶合集成",
+          "tier": "中游·代工/封测",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "600584",
+          "market": "sh",
+          "name": "长电科技",
+          "tier": "中游·代工/封测",
+          "fundamentalPass": true,
+          "q3Summary": "营收+8% / 扣非+99.2% / 毛利16%"
+        },
+        {
+          "code": "002156",
+          "market": "sz",
+          "name": "通富微电",
+          "tier": "中游·代工/封测",
+          "fundamentalPass": true,
+          "q3Summary": "营收+23.7% / 扣非+77.1% / 毛利15.9%"
+        },
+        {
+          "code": "688256",
+          "market": "sh",
+          "name": "寒武纪",
+          "tier": "下游·芯片设计",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "688041",
+          "market": "sh",
+          "name": "海光信息",
+          "tier": "下游·芯片设计",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "603986",
+          "market": "sh",
+          "name": "兆易创新",
+          "tier": "下游·芯片设计",
+          "fundamentalPass": true,
+          "q3Summary": "营收+197.1% / 扣非+805.3% / 毛利66.2%"
+        },
+        {
+          "code": "688008",
+          "market": "sh",
+          "name": "澜起科技",
+          "tier": "下游·芯片设计",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "301308",
+          "market": "sz",
+          "name": "江波龙",
+          "tier": "下游·芯片设计",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "300661",
+          "market": "sz",
+          "name": "圣邦股份",
+          "tier": "下游·芯片设计",
+          "fundamentalPass": true,
+          "q3Summary": "26Q3科创/创业龙头"
+        },
+        {
+          "code": "603893",
+          "market": "sh",
+          "name": "瑞芯微",
+          "tier": "下游·芯片设计",
+          "fundamentalPass": true,
+          "q3Summary": "营收+41.6% / 扣非+72.1% / 毛利46.4%"
+        },
+        {
+          "code": "588170",
+          "market": "sh",
+          "name": "科创半导体ETF",
+          "tier": "上游·设备材料ETF穿透替补",
+          "isEtfSubstitute": true,
+          "allowMainboardAccount": true,
+          "fundamentalPass": true,
+          "q3Summary": "前十重仓中微/拓荆/华海清科/中科飞测/沪硅/盛美/安集/芯源微占比>70%，主板账户免50万门槛/免印花税替补"
+        }
+      ]
+    },
+    {
+      "id": "industrial_cnc",
+      "name": "工业母机",
+      "policyTier": "第一档·硬工程(工业母机国产替代)",
+      "etfProxy": "159667",
+      "benchmarkCodes": ["000852", "399006"],
+      "stocks": [
+        {
+          "code": "300124",
+          "market": "sz",
+          "name": "汇川技术",
+          "tier": "上游·工控伺服/数控",
+          "fundamentalPass": true,
+          "q3Summary": "营收+19.9% / 扣非+0.5% / 毛利28.2%"
+        },
+        {
+          "code": "300161",
+          "market": "sz",
+          "name": "华中数控",
+          "tier": "上游·高档数控系统",
+          "fundamentalPass": true,
+          "q3Summary": "营收+23.8% / 扣非+11.7% / 毛利43.9%"
+        },
+        {
+          "code": "688017",
+          "market": "sh",
+          "name": "绿的谐波",
+          "tier": "上游·精密谐波传动",
+          "fundamentalPass": true,
+          "q3Summary": "营收+45.3% / 扣非+38.2% / 毛利32.7%"
+        },
+        {
+          "code": "002046",
+          "market": "sz",
+          "name": "国机精工",
+          "tier": "上游·机床轴承/磨具",
+          "fundamentalPass": false,
+          "q3Summary": "营收+5.1% / 扣非-54.5% / 毛利34.7%"
+        },
+        {
+          "code": "301377",
+          "market": "sz",
+          "name": "鼎泰高科",
+          "tier": "上游·AI微钻/刀具",
+          "fundamentalPass": true,
+          "q3Summary": "营收+139.2% / 扣非+334% / 毛利53.5%"
+        },
+        {
+          "code": "000657",
+          "market": "sz",
+          "name": "中钨高新",
+          "tier": "上游·硬质合金刀片",
+          "fundamentalPass": true,
+          "q3Summary": "营收+85.6% / 扣非+279.9% / 毛利31%"
+        },
+        {
+          "code": "688059",
+          "market": "sh",
+          "name": "华锐精密",
+          "tier": "上游·高端数控刀片",
+          "fundamentalPass": true,
+          "q3Summary": "营收+21% / 扣非+128.1% / 毛利51.6%"
+        },
+        {
+          "code": "688308",
+          "market": "sh",
+          "name": "欧科亿",
+          "tier": "上游·数控刀具",
+          "fundamentalPass": true,
+          "q3Summary": "营收+55.9% / 扣非+1270.6% / 毛利41.7%"
+        },
+        {
+          "code": "688305",
+          "market": "sh",
+          "name": "科德数控",
+          "tier": "中游·五轴联动机床",
+          "fundamentalPass": false,
+          "q3Summary": "营收-30.4% / 扣非-78% / 毛利41.4%"
+        },
+        {
+          "code": "601882",
+          "market": "sh",
+          "name": "海天精工",
+          "tier": "中游·大型数控机床",
+          "fundamentalPass": true,
+          "q3Summary": "营收+26% / 扣非+7.8% / 毛利25.3%"
+        },
+        {
+          "code": "688697",
+          "market": "sh",
+          "name": "纽威数控",
+          "tier": "中游·中高端机床出口",
+          "fundamentalPass": true,
+          "q3Summary": "营收+30.4% / 扣非+37% / 毛利22%"
+        },
+        {
+          "code": "002595",
+          "market": "sz",
+          "name": "豪迈科技",
+          "tier": "中游·模具/五轴机床",
+          "fundamentalPass": false,
+          "q3Summary": "营收+14.8% / 扣非-9.8% / 毛利30.4%"
+        },
+        {
+          "code": "000837",
+          "market": "sz",
+          "name": "秦川机床",
+          "tier": "中游·精密磨床/丝杠",
+          "fundamentalPass": true,
+          "q3Summary": "营收+10% / 扣非+1198% / 毛利17.9%"
+        },
+        {
+          "code": "300083",
+          "market": "sz",
+          "name": "创世纪",
+          "tier": "中游·3C/通用机床",
+          "fundamentalPass": true,
+          "q3Summary": "营收+42.4% / 扣非+70.1% / 毛利24.6%"
+        },
+        {
+          "code": "002008",
+          "market": "sz",
+          "name": "大族激光",
+          "tier": "中游·激光工业母机",
+          "fundamentalPass": true,
+          "q3Summary": "营收+68.9% / 扣非+304.9% / 毛利35.5%"
+        },
+        {
+          "code": "000988",
+          "market": "sz",
+          "name": "华工科技",
+          "tier": "中游·激光装备+光模块",
+          "fundamentalPass": true,
+          "q3Summary": "营收+14.6% / 扣非+7.2% / 毛利20.6%"
+        }
+      ]
+    },
+    {
+      "id": "ai_compute_domestic",
+      "name": "国产AI算力",
+      "policyTier": "第一档·硬工程(全国一体化算力网/国产自主算力)",
+      "etfProxy": "515880",
+      "benchmarkCodes": ["399006", "000688"],
+      "stocks": [
+        {
+          "code": "688041",
+          "market": "sh",
+          "name": "海光信息",
+          "tier": "上游·国产算力芯片",
+          "fundamentalPass": true,
+          "q3Summary": "营收+57.6% / 扣非+42.2% / 毛利56.6%"
+        },
+        {
+          "code": "688256",
+          "market": "sh",
+          "name": "寒武纪",
+          "tier": "上游·国产AI芯片",
+          "fundamentalPass": true,
+          "q3Summary": "营收+106.8% / 扣非+148.3% / 毛利56.5%"
+        },
+        {
+          "code": "002281",
+          "market": "sz",
+          "name": "光迅科技",
+          "tier": "上游·国产光模块/光芯片",
+          "fundamentalPass": true,
+          "q3Summary": "营收+36.9% / 扣非+87.5% / 毛利25.5%"
+        },
+        {
+          "code": "603019",
+          "market": "sh",
+          "name": "中科曙光",
+          "tier": "中游·国产服务器/液冷",
+          "fundamentalPass": true,
+          "q3Summary": "营收+38.8% / 扣非+105% / 毛利27.3%"
+        },
+        {
+          "code": "000977",
+          "market": "sz",
+          "name": "浪潮信息",
+          "tier": "中游·国内AI服务器(偏弱需盯定价权)",
+          "fundamentalPass": true,
+          "q3Summary": "营收+7.2% / 扣非+157.9% / 毛利8.6%"
+        },
+        {
+          "code": "000938",
+          "market": "sz",
+          "name": "紫光股份",
+          "tier": "中游·AI交换机/ICT(偏弱需盯定价权)",
+          "fundamentalPass": true,
+          "q3Summary": "营收+32.1% / 扣非+68.3% / 毛利12.3%"
+        },
+        {
+          "code": "002837",
+          "market": "sz",
+          "name": "英维克",
+          "tier": "中游·算力液冷温控",
+          "fundamentalPass": false,
+          "q3Summary": "营收+22.9% / 扣非-7.1% / 毛利26.1%"
+        },
+        {
+          "code": "002851",
+          "market": "sz",
+          "name": "麦格米特",
+          "tier": "中游·AI服务器电源",
+          "fundamentalPass": false,
+          "q3Summary": "营收+33% / 扣非-10.6% / 毛利20.8%"
+        },
+        {
+          "code": "300442",
+          "market": "sz",
+          "name": "润泽科技",
+          "tier": "下游·AIDC智算中心",
+          "fundamentalPass": true,
+          "q3Summary": "营收+42.5% / 扣非+33% / 毛利46.3%"
+        },
+        {
+          "code": "603881",
+          "market": "sh",
+          "name": "数据港",
+          "tier": "下游·大厂AIDC机房",
+          "fundamentalPass": false,
+          "q3Summary": "营收-2.3% / 扣非-2.6% / 毛利28.8%"
+        }
+      ]
+    },
+    {
+      "id": "ai_compute_overseas",
+      "name": "海外AI算力链(隔离观察)",
+      "policyTier": "观察池·外部限制致订单增速逻辑受损(与国产链解绑防污染宽度)",
+      "watchOnly": true,
+      "etfProxy": "515880",
+      "benchmarkCodes": ["399006"],
+      "stocks": [
+        {
+          "code": "300308",
+          "market": "sz",
+          "name": "中际旭创",
+          "tier": "海外链·800G/1.6T光模块",
+          "fundamentalPass": true,
+          "q3Summary": "营收+178.1% / 扣非+212.1% / 毛利46.4%(外部限制隔离)"
+        },
+        {
+          "code": "300502",
+          "market": "sz",
+          "name": "新易盛",
+          "tier": "海外链·高速光模块",
+          "fundamentalPass": true,
+          "q3Summary": "营收+93% / 扣非+76.8% / 毛利47.7%(外部限制隔离)"
+        },
+        {
+          "code": "300394",
+          "market": "sz",
+          "name": "天孚通信",
+          "tier": "海外链·光引擎/光器件",
+          "fundamentalPass": true,
+          "q3Summary": "营收+21.3% / 扣非+44.3% / 毛利62.6%(外部限制隔离)"
+        },
+        {
+          "code": "002463",
+          "market": "sz",
+          "name": "沪电股份",
+          "tier": "海外链·AI高速PCB",
+          "fundamentalPass": true,
+          "q3Summary": "营收+71.9% / 扣非+104.5% / 毛利40.9%(外部限制隔离)"
+        },
+        {
+          "code": "300476",
+          "market": "sz",
+          "name": "胜宏科技",
+          "tier": "海外链·GPU算力PCB",
+          "fundamentalPass": true,
+          "q3Summary": "营收+30.8% / 扣非+13.7% / 毛利33.6%(外部限制隔离)"
+        },
+        {
+          "code": "601138",
+          "market": "sh",
+          "name": "工业富联",
+          "tier": "海外链·AI服务器代工",
+          "fundamentalPass": true,
+          "q3Summary": "营收+55.9% / 扣非+82.2% / 毛利7.1%(外部限制隔离)"
+        }
+      ]
+    }
+  ]
+}
